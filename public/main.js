@@ -31,7 +31,7 @@ function onWindowResize()
 // light
 
 
-// mouse click
+// mouse click functionality
 let mouse = new THREE.Vector2()
 let raycaster = new THREE.Raycaster()
 
@@ -55,22 +55,23 @@ const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(3, 50, 50),
     new THREE.MeshBasicMaterial({
         //color: 0x2266EE
-        map: new THREE.TextureLoader().load('./img/globe.jpg')
+        map: new THREE.TextureLoader().load('./img/globe.jpg') // jpg is "wrapped" around the sphere
     })
 )
 scene.add(sphere)
 
-camera.position.z = 8
+camera.position.z = 5
 
 
-// controls
+// controls 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.maxPolarAngle = 2 * Math.PI / 3
 controls.minPolarAngle = Math.PI / 3
 controls.enableDamping = true
+controls.enableZoom = false;
 
 
-// "main" function: entry point
+// establishing the "main" function or entry point into file
 function animate() {
     requestAnimationFrame(animate)
     renderer.render(scene, camera)
